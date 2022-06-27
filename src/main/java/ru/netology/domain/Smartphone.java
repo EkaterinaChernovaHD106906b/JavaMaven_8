@@ -6,7 +6,11 @@ import lombok.Data;
 
 public class Smartphone extends Product {
 
-    private String producer;
+    protected String producer;
+
+    public Smartphone(String producer) {
+        this.producer = producer;
+    }
 
     public Smartphone(int id, String name, int price, String producer) {
         super(id, name, price);
