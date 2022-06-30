@@ -1,12 +1,12 @@
 package ru.netology.domain;
 
 public class ProductManager {
-    private Product[] products = new Product[0];
-    ProductRepository repo = new ProductRepository();
+    private  ProductRepository repo;
+    Product[] products = new Product[0];
 
     public ProductManager(ProductRepository repo) {
-        this.repo = repo;
-    }
+       this.repo = repo;}
+
 
 
     public void add(Product product) {
