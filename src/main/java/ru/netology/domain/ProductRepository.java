@@ -2,7 +2,7 @@ package ru.netology.domain;
 
 public class ProductRepository {
 
-    private Product[] products = new Product[0];
+    protected Product[] products = new Product[0];
 
 
     public void save(Product product) {
