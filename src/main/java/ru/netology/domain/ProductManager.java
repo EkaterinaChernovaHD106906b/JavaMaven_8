@@ -1,23 +1,15 @@
 package ru.netology.domain;
 
 public class ProductManager {
-    protected ProductRepository repo;
-    protected Product[] products = new Product[0];
 
+    protected ProductRepository repo;
 
     public ProductManager(ProductRepository repo) {
         this.repo = repo;
     }
 
-
     public void add(Product product) {
-        Product[] tmp = new Product[products.length + 1];
-        for (int i = 0; i < products.length; i++) {
-            tmp[i] = products[i];
-        }
-        tmp[tmp.length - 1] = product;
-        products = tmp;
-
+        repo.save(product);
 
     }
 
@@ -46,5 +38,6 @@ public class ProductManager {
 
         return result;
     }
+
 }
 

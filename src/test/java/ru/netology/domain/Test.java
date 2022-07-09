@@ -12,10 +12,6 @@ public class Test {
     public void myTest() {
         ProductRepository repo = new ProductRepository();
         ProductManager manager = new ProductManager(repo);
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
         repo.save(first);
         repo.save(second);
         repo.save(third);
@@ -41,10 +37,6 @@ public class Test {
         ProductRepository repo = new ProductRepository();
 
         ProductManager manager = new ProductManager(repo);
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
         repo.save(first);
         repo.save(second);
         repo.save(third);
@@ -61,10 +53,6 @@ public class Test {
         ProductRepository repo = new ProductRepository();
 
         ProductManager manager = new ProductManager(repo);
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
-        manager.add(fourth);
         repo.save(first);
         repo.save(second);
         repo.save(third);
@@ -81,8 +69,6 @@ public class Test {
         ProductRepository repo = new ProductRepository();
 
         ProductManager manager = new ProductManager(repo);
-        manager.add(first);
-        manager.add(second);
         repo.save(first);
         repo.save(second);
         Product[] actual = manager.searchBy("g");
@@ -95,11 +81,7 @@ public class Test {
     @org.junit.jupiter.api.Test
     public void myTest6() {
         ProductRepository repo = new ProductRepository();
-
         ProductManager manager = new ProductManager(repo);
-        manager.add(first);
-        manager.add(second);
-        manager.add(third);
         repo.save(first);
         repo.save(second);
         repo.save(third);
@@ -109,5 +91,34 @@ public class Test {
 
 
     }
+
+    @org.junit.jupiter.api.Test
+    public void myTest7() {
+        ProductRepository repo = new ProductRepository();
+        repo.save(first);
+        repo.save(second);
+        repo.removeById(12);
+        Product[] actual = repo.findAll();
+        Product[] expected = {second};
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+
+    @org.junit.jupiter.api.Test
+    public void myTest8() {
+        ProductRepository repo = new ProductRepository();
+        repo.save(first);
+        repo.save(second);
+
+        Assertions.assertThrows(NotFoundException.class, () -> {
+            repo.removeById(-12);
+        });
+
+
+    }
+
 }
+
+
+
 
